@@ -26,6 +26,10 @@ kotlin {
         }
         val jsMain by getting {
             dependencies {
+                implementation(npm("d3", "7.1.1"))
+                // testImplementation(kotlin("test", "1.5.31"))
+                // https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-html-js
+                implementation("org.jetbrains.kotlinx:kotlinx-html-js:0.7.3")
             }
         }
     }

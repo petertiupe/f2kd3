@@ -1,1 +1,1 @@
-rootProject.name = "fritz2-template"
+rootProject.name = "f2kd3"
