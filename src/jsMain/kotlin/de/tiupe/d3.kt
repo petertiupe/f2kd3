@@ -1,5 +1,7 @@
 package de.tiupe
 
+import kotlin.js.Promise
+
 @JsModule("d3")
 @JsNonModule
 //external fun <T> sorted(a: Array<T>): Boolean
@@ -8,6 +10,7 @@ external object d3 {
      fun scaleLinear(): dynamic
      fun axisBottom(fkt: dynamic) : dynamic
      fun axisLeft(fkt: dynamic): dynamic
+     fun tsv(filename: String): Promise<dynamic>
 }
 
 external class Selection() {
@@ -18,6 +21,8 @@ external class Selection() {
      fun selectAll(id: String): Selection
      fun data(dt: dynamic): Selection
      fun enter(): Selection
+     fun exit(): Selection
+     fun remove(): Selection
 
 
 
