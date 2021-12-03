@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.map
 import model.Framework
 import org.w3c.dom.events.Event
 
-val buttonHandler: suspend (Event) -> Unit = { e : Event ->
+val buttonHandlerExample2: suspend (Event) -> Unit = { e : Event ->
     console.log("Peter wars")
 }
 
@@ -36,7 +36,7 @@ fun example2() {
         }
         button("btn") {
             + "Beispiel 2"
-            clicks.handledBy(buttonHandler)
+            clicks.handledBy(buttonHandlerExample2)
         }
     }
 }
