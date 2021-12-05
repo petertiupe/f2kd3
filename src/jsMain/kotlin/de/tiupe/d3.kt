@@ -13,6 +13,8 @@ external object d3 {
      fun tsv(filename: String): Promise<dynamic>
      fun extent(data: dynamic, fkt: dynamic): dynamic
      fun line(): dynamic
+     val curveStep: dynamic
+     val curveNatural: dynamic
 }
 
 external class Selection() {
