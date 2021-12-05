@@ -10,6 +10,8 @@ external object d3 {
      fun scaleLinear(): dynamic
      fun axisBottom(fkt: dynamic) : dynamic
      fun axisLeft(fkt: dynamic): dynamic
+     fun axisRight(fkt: dynamic): dynamic
+     fun axisTop(fkt: dynamic): dynamic
      fun tsv(filename: String): Promise<dynamic>
      fun extent(data: dynamic, fkt: dynamic): dynamic
      fun line(): dynamic

@@ -36,9 +36,25 @@ fun example4() {
             drawDataAsCircle(data, g2, pxX, pxY, {d -> scY2(d["y2"])}, d3.curveNatural, "blue", "red")
 
 
+            val axisRightMaker = d3.axisRight(scY1)
+            val axisLeftMaker = d3.axisLeft(scY2)
 
 
+            val axisBottomMaker = d3.axisBottom(scX)
 
+            // Die rechte Axe kann man einfach zeichnen, die Interpretation des Werts benötige ich noch.
+            axisRightMaker(svg.append("g"))
+            svg.append("g")
+                .attr("transform", "translate($pxX,0)")
+                .call(axisLeftMaker)
+
+            svg.append("g")
+                .attr("transform", "translate($pxX,0)")
+                .call(axisLeftMaker)
+
+            svg.append("g")
+                .call(d3.axisTop( scX))
+                .attr("transform", "translate(0,$pxY,0)")
         }
 }
 
@@ -82,8 +98,10 @@ fun drawDataAsCircle(dataToDraw: Selection, selectionToDrawTo: Selection, pxX: d
         .append("path")
         .attr("fill", "none")
         .attr("d", lineMaker(dataToDraw))
-        .attr("stroke", "black")
+        .attr("stroke", pathColor)
 
     setColorsForGraph(selectionToDrawTo, fillColor, pathColor)
 
 }
+
+
