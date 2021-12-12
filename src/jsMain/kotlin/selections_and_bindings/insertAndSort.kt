@@ -45,17 +45,15 @@ fun insertAndSort() {
     // Sortieren bei Klick
     ul.on("click"){
         ul.selectAll("li").sort<String>{ a, b ->
-            console.log("sort gerufen")
-            console.log("A -> $a")
-            console.log("B -> $b")
-            val comp =if(a < b) {
+            // Sortierung ist aufsteigend
+            if(a < b) {
                 -1
             } else if(b < a) {
                 1
             } else {
                 0
             }
-            comp
+
         }
     }
 }
