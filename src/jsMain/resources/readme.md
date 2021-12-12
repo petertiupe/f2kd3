@@ -33,6 +33,9 @@ Wenn ein Datenpunkt mit einem DOM-Element verknüpft wird, wird er in der Eigens
 gespeichert. Diese Beziehung zwischen dem Wert und dem Element bleibt bestehen, bis sie ausdrücklich überschrieben
 wird. Die Daten stehen also nun Methoden zur Verfügung die das Erscheinungsbild eines Elements ändern.
 
+Die Funktion `data` gibt eine Selektion von DOM-Elementen zurück, die an Datenpunkte gebunden werden konnte.
+Erst mit den folgenden beiden Funktionen `exit` und `enter` erhält man eine 1 : 1 Beziehung zwischen Elementen und Daten.
+
 ## Enter- und Exit-Selections
 Wenn die Anzahl von Datenpunkten und Elementen, an die sie gebunden werden, nicht übereinstimmt, bleiben entweder
 Elemente oder Datenpunkte übrig. 
@@ -44,3 +47,29 @@ Bleiben Elemente übring, kann man über die `exit`-Funktion auf sie zugreifen, 
     <li>übrige Elemente  -->  <code>exit</code>-Funktion um Elemente zu verwerfen</li>
     <li>übrige Daten     -->  <code>enter</code>-Funktion um Elemente zu erzeugen</li>
 </ul>
+
+### Enter-Beispiel
+`````kotlin
+d3.select( "svg")
+    .append("g")
+    .attr( "id", "ds2")
+    .selectAll( "circle" )
+    .data(data).enter()
+    .append("circle")//.attr("fill", "green")
+    .attr("fill", "red")
+`````
+In dem Beispiel gab es noch gar keine HTML-Elemente für die Daten. Mit Enter wird dann für jedes Feld aus einer 
+"Datentabelle" ein neues Element vom Typ "circle" erstellt. `enter`-liefert die Selection der überzähligen Datenelemente 
+und `append` für jedes Element dieser Selection wird dann ein neues Circle-Element erzeugt.  
+
+### Exit-Beispiel
+`````kotlin
+d3.select("svg")
+    .selectAll("circle")
+    .data(data)
+    .exit()
+    .remove()
+`````
+In dem Beispiel werden die `circle`-DOM-Elemente selektiert und die Daten werden an sie gebunden. Die Daten, für die
+es kein entsprechendes Element gibt, werden mit der `exit`-Funktion gewählt und dann entsprechend gelöscht, indem die
+`remove`-Funktion aufgerufen wird.

@@ -59,16 +59,22 @@ external class Selection() {
      fun append(name: String) : Selection
      fun attr(name: String, value: dynamic = definedExternally): Selection
      fun call(fkt: dynamic): Selection
+
      /*
      * data gibt eine Selection der DOM-Elemente zurück, die an Datenpunkte gebunden werden konnte.
+     * Wird ein Key angegeben, erfolgt die Bindung an Knoten mit dem passenden Schlüssel.
+     * Wird die Funktion ohne Argumente aufgerufen, returniert die Funktion ein Array der Datenpunkte in der
+     * aktuellen Selection.
      * */
      fun data(data: Array<dynamic>): Selection
      fun data(data: Array<dynamic>, key: dynamic): Selection
+     fun data(): Selection
 
      /*
      * Liefert Platzhalterelemente für überzählige Datenpunkte, für die es noch keine Elemente im DOM-Baum gibt
      * */
      fun enter(): Selection
+
      /*
      * ermittelt die überzähligen DOM-Elemente, für die es keine Daten gibt.
      * */
