@@ -3,30 +3,59 @@ package selections_and_bindings
 import de.tiupe.Selection
 import de.tiupe.d3
 
+/*
+* Das Programm baut eine Liste auf, indem die Text-Knoten auf der Seite angezeigt werden.
+* Bewegt man die Maus über den Text, werden die zwei Einträge 'Peter' und 'Marx' hinzugefügt.
+* Klickt man darauf, werden die Einträge sortiert.
+*
+* Achtung, bei diesem Beispiel ist das "Root-Objekt" eine unsortierte Liste, nicht ein SVG-Element.
+* */
+
 fun insertAndSort() {
     console.log("insertAndSort läuft")
     
     val dataSet = arrayOf("Inken", "Lara", "Tina")
-    val svg: Selection = d3.select("insertAndSortSvg")
+    val ul: Selection = d3.select("#insertAndSortSvg")
     
-    svg.selectAll("li")
+    ul.selectAll("li")
         .data(dataSet)
-        .enter().append("li")
+        .enter()
+        .append("li")
+        .text {
+            d: String ->
+            console.log(d)
+            d
+        }
     
     // Beim Überfahren mit der Maus, soll ein Element eingefügt werden
     var once = false
-    svg.on("mouseenter", { d: dynamic ->
-        if(once) {
-
+    ul.on("mouseenter") { d: dynamic ->
+        if (once) {
+            console.log("once war true, nichts passiert")
         } else {
             once = true
-
-            svg.insert("li", "nth-child(2")
+            ul.insert("li", ":nth-child(2)")
                 .datum("Peter")
                 .text("Peter")
 
-            svg.insert("li", ":first-child")
+            ul.insert("li", ":first-child")
                 .datum("Marx").text("Marx")
         }
-    })
+    }
+    // Sortieren bei Klick
+    ul.on("click"){
+        ul.selectAll("li").sort<String>{ a, b ->
+            console.log("sort gerufen")
+            console.log("A -> $a")
+            console.log("B -> $b")
+            val comp =if(a < b) {
+                -1
+            } else if(b < a) {
+                1
+            } else {
+                0
+            }
+            comp
+        }
+    }
 }

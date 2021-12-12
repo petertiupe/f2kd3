@@ -117,6 +117,8 @@ external class Selection() {
 
      fun insert(intem: dynamic, before: dynamic): Selection
 
+     fun <T>sort(comparator: (T,T) -> Int): Selection
+
      /*
      * setzt den Textkontext auf den angegebenen Wert. Man kann damit den Inhalt von <text>-Elementen festlegen.
      * */
