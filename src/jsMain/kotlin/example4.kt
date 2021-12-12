@@ -15,7 +15,7 @@ fun example4() {
     val frameworkStore = storeOf(Framework("fritz2"))
     val store: Store<Array<GraphPoint>> = storeOf(arrayOf(GraphPoint(10, 20), GraphPoint(40, 90), GraphPoint(80, 50)))
     d3.tsv("beispiel4data.tsv")
-        .then{data: dynamic ->
+        .then{data: Array<dynamic> ->
             // svg - Element ist in dem HTML bereits definiert
             val svg = d3.select("svg")
 
@@ -58,7 +58,7 @@ fun example4() {
         }
 }
 
-fun makeScale(data: Selection, accessor: (dynamic) -> dynamic, range: Array<dynamic>): dynamic {
+fun makeScale(data: Array<dynamic>, accessor: (dynamic) -> dynamic, range: Array<dynamic>): dynamic {
     return d3.scaleLinear()
         // extent nimmt den größten und den kleinsten Wert der Domain entgegen und gibt das zwei
         // Werte-Array zurück.
@@ -73,7 +73,7 @@ fun setColorsForGraph(selectionToDrawTo: Selection, fillColor: String, pathColor
         .attr("path", pathColor)
 }
 
-fun drawDataAsCircle(dataToDraw: Selection, selectionToDrawTo: Selection, pxX: dynamic, pxY: dynamic, yDataAccessor: (dynamic) -> dynamic, drawType: dynamic, fillColor: String, pathColor: String){
+fun drawDataAsCircle(dataToDraw: Array<dynamic>, selectionToDrawTo: Selection, pxX: dynamic, pxY: dynamic, yDataAccessor: (dynamic) -> dynamic, drawType: dynamic, fillColor: String, pathColor: String){
 
     val scX = makeScale(dataToDraw, {d: dynamic -> d["x"]}, arrayOf(0, pxX))
     val scY1 = makeScale(dataToDraw, { d: dynamic -> d["y1"]}, arrayOf(pxY, 0))

@@ -27,7 +27,7 @@ fun createAnimatedListItems() {
         .append("li").text { d: dynamic -> d }
         .style("color", "green")
         // transition().style("color","green").duration(5000)
-        .on("click") {
+        /*.on("click") {
             toggleState = !toggleState
             val animation = d3.select(it)
                 .transition()
@@ -40,7 +40,7 @@ fun createAnimatedListItems() {
                     }
                     }
                 )
-        }
+        }*/
 }
 
 /*

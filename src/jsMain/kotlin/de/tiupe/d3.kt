@@ -1,5 +1,7 @@
 package de.tiupe
 
+import org.w3c.dom.Element
+import org.w3c.dom.Node
 import org.w3c.dom.pointerevents.PointerEvent
 import kotlin.js.Promise
 
@@ -7,7 +9,27 @@ import kotlin.js.Promise
 @JsNonModule
 //external fun <T> sorted(a: Array<T>): Boolean
 external object d3 {
-     fun select(selector: dynamic): Selection
+     /*
+     * Durchsucht das gesamte Dokument und gibt eine Selection mit dem ersten Element zurück, das mit dem Selektor
+     * übereinstimmt. Wird nichts gefunden, wird eine leere Liste zurückgegeben.
+     * */
+     fun select(cssSelector: String): Selection
+     fun select(node: Node): Selection
+
+     /*
+     * Arbeitet wie [select], allerdings wird eine Liste mit allen Element zurückgegeben, die mit dem Selektor
+     * übereinstimmen.
+     *
+     * Es kann ein Selktorstring oder ein Nodeobjekt übergeben werden.
+     * */
+     fun selectAll(cssSelector: String): Selection
+     fun selectAll(node: Node): Selection
+
+     /*
+     * Erstellt ein Element mit dem übergebenen Namen im aktuellen Dokument
+     * */
+     fun create(name: String): Selection
+
      fun scaleLinear(): dynamic
      fun axisBottom(fkt: dynamic) : dynamic
      fun axisLeft(fkt: dynamic): dynamic
@@ -23,14 +45,35 @@ external object d3 {
 }
 
 external class Selection() {
+     fun select(cssSelctor: String): Selection
+     fun select(fkt: (dynamic) -> Element)
+
+     fun selectAll(cssSelector: String): Selection
+     fun selectAll(fkt: (dynamic) -> Array<Element>): Selection
+
+     fun filter(cssSelctor: String): Selection
+     fun filter(fkt: (dynamic) -> Boolean): Selection
+
+
      fun style(name: String, value: dynamic = definedExternally,  priority: dynamic = definedExternally) : Selection
      fun append(name: String) : Selection
      fun attr(name: String, value: dynamic = definedExternally): Selection
      fun call(fkt: dynamic): Selection
-     fun selectAll(id: String): Selection
-     fun data(dt: dynamic): Selection
+     /*
+     * data gibt eine Selection der DOM-Elemente zurück, die an Datenpunkte gebunden werden konnte.
+     * */
+     fun data(data: Array<dynamic>): Selection
+     fun data(data: Array<dynamic>, key: dynamic): Selection
+
+     /*
+     * Liefert Platzhalterelemente für überzählige Datenpunkte, für die es noch keine Elemente im DOM-Baum gibt
+     * */
      fun enter(): Selection
+     /*
+     * ermittelt die überzähligen DOM-Elemente, für die es keine Daten gibt.
+     * */
      fun exit(): Selection
+
      fun remove(): Selection
      fun text(text: dynamic): Selection
      fun toggleState(): Selection
