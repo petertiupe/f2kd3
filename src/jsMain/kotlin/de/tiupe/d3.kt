@@ -44,6 +44,16 @@ external object d3 {
 
 }
 
+
+/*
+     * Functions haben in der Regel innerhalb der Selection-API die folgende Signatur:
+     *
+     *    function(d, i, nodes) : String oder Domknoten
+     *    d:        ausgewählter Datenpunkt für das DomElement
+     *    i:        Index des Elements in dem Daten-Array
+     *    nodes:    Knoten der aktuellen Selektion
+     *
+     * */
 external class Selection() {
      fun select(cssSelctor: String): Selection
      fun select(fkt: (dynamic) -> Element)
@@ -59,6 +69,8 @@ external class Selection() {
      fun append(name: String) : Selection
      fun attr(name: String, value: dynamic = definedExternally): Selection
      fun call(fkt: dynamic): Selection
+
+
 
      /*
      * data gibt eine Selection der DOM-Elemente zurück, die an Datenpunkte gebunden werden konnte.
@@ -88,6 +100,9 @@ external class Selection() {
      fun on(event: String, fkt: (Selection) -> Unit)
      fun dispatch(event: String)
 
+     /*
+     * dient zum Mergen, wenn eine enter- und eine exit-Selection unabhängig voneinander erstellt wurden
+     * */
      fun merge(selection: Selection): Selection
 
 
