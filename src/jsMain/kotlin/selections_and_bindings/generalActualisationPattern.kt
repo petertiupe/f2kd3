@@ -55,6 +55,7 @@ fun generalActualisationPattern() {
         cs.attr("cx", { d: dynamic -> scaleX(d[0]) } )
             .attr("cy", { d: dynamic -> scaleY(d[1]) })
     }
+    // dispatch sorgt für das Auslösen des Events beim Laden der Seite, sodass sie einmal dargestellt wird.
     svg.dispatch( "click" )
 }
 
