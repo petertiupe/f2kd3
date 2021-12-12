@@ -73,3 +73,16 @@ d3.select("svg")
 In dem Beispiel werden die `circle`-DOM-Elemente selektiert und die Daten werden an sie gebunden. Die Daten, für die
 es kein entsprechendes Element gibt, werden mit der `exit`-Funktion gewählt und dann entsprechend gelöscht, indem die
 `remove`-Funktion aufgerufen wird.
+
+## Allgemeines Aktualisierungsmuster
+Ziel dieser Programme ist, das Zusammenspiel von Fritz2 und d3js zu verbessern. Fritz2 basiert auf sich ständig ändernden
+Daten. In diesem Fall müssen ständig neue Elemente und bereits vorhandene Elemente miteinander zu einem "DOM-Baum"
+verbundenn werden. Hierzu gibt es ein allgemeines Akutalisierungsmuster:
+
+<ol>
+    <li>neue Daten werden an eine bestehende Element-Selection gebunden</li>
+    <li>überzählige Elemente werden via <code>exit</code> entfernt</li>
+    <li>eine <code>enter</code>Selection wird für neue Datenpunkte erstellt</li>
+    <li>Vereinigung der verbleibenden und der neuen Elemente</li>
+    <li>Aktualisierung der Elemente anhand der aktuellen Datenmenge</li>
+ </ol>
