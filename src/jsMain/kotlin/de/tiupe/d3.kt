@@ -115,6 +115,8 @@ external class Selection() {
 
      fun remove(): Selection
 
+     fun insert(intem: dynamic, before: dynamic): Selection
+
      /*
      * setzt den Textkontext auf den angegebenen Wert. Man kann damit den Inhalt von <text>-Elementen festlegen.
      * */

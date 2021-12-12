@@ -1,5 +1,6 @@
 import kotlinx.browser.window
 import selections_and_bindings.generalActualisationPattern
+import selections_and_bindings.insertAndSort
 import selections_and_bindings.updateWithKey
 
 
@@ -11,6 +12,7 @@ fun main() {
    if(window.location.href=="http://localhost:8080/example5.html") example5()
    if(window.location.href=="http://localhost:8080/selections_and_bindings/updateWithKey.html") updateWithKey()
    if(window.location.href=="http://localhost:8080/selections_and_bindings/generalActualisationPattern.html") generalActualisationPattern()
+   if(window.location.href=="http://localhost:8080/selections_and_bindings/insertAndSort.html") insertAndSort()
 
    if(window.location.href=="http://localhost:8080/template.html") template()
 
