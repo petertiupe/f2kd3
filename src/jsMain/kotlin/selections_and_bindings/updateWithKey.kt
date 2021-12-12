@@ -1,3 +1,4 @@
+package selections_and_bindings
 import de.tiupe.Selection
 import de.tiupe.d3
 import dev.fritz2.binding.Store

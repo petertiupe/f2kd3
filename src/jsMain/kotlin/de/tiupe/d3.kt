@@ -86,6 +86,9 @@ external class Selection() {
      fun transition(): Selection
      fun duration(timeInMillis: Long): Selection
      fun on(event: String, fkt: (Selection) -> Unit)
+     fun dispatch(event: String)
+
+     fun merge(selection: Selection): Selection
 
 
 
