@@ -1,7 +1,9 @@
 package de.tiupe
 
+import kotlinx.html.HTML
 import org.w3c.dom.Element
 import org.w3c.dom.Node
+import org.w3c.dom.SelectionMode
 import org.w3c.dom.pointerevents.PointerEvent
 import kotlin.js.Promise
 
@@ -65,9 +67,28 @@ external class Selection() {
      fun filter(fkt: (dynamic) -> Boolean): Selection
 
 
-     fun style(name: String, value: dynamic = definedExternally,  priority: dynamic = definedExternally) : Selection
+
+
      fun append(name: String) : Selection
+
+     /* Setzt das Attribut auf den angegebenen Wert */
      fun attr(name: String, value: dynamic = definedExternally): Selection
+
+     /* Setzt die Formatierungseigenschaft auf den angegebenen Wert
+     * Längen erfordern in der Regel die Angabe einer Einheit*/
+     fun style(name: String, value: dynamic = definedExternally,  priority: dynamic = definedExternally) : Selection
+
+     /* Setzt die Eigenschaft mit dem Namen auf den angegebenen Wert. Wird vor allem für HTML-Eigenschaften
+     *  verwendet, die nicht als Attribute zugänglich sind, wi das checked bei Radiobuttons.*/
+     fun property(name: String, value: dynamic): Selection
+
+     /* value ist ein durch Weißraum getrennter String von Klassennamen. Bei dem flag true werden die Klassen
+     *  berücksichtigt, sonst nicht.
+     * */
+     fun classed(value: String, flag: Boolean): Selection
+
+
+
      fun call(fkt: dynamic): Selection
 
 
@@ -93,7 +114,29 @@ external class Selection() {
      fun exit(): Selection
 
      fun remove(): Selection
+
+     /*
+     * setzt den Textkontext auf den angegebenen Wert. Man kann damit den Inhalt von <text>-Elementen festlegen.
+     * */
      fun text(text: dynamic): Selection
+
+     /*
+     * setzt das innere HTML auf den angegebenen Wert.
+     * Die Funktion stehllt eine Eigenschaft der DOM-Schnittstelle (Element) nach.
+     * */
+     fun html(value: HTML): Selection
+
+     /*
+     * Setzt den an dieses Element gebundenen Datenpunkt auf den angegebenen Wert
+     * */
+     fun datum(value: dynamic ): Selection
+
+     /*
+     * ruft die angegebene Funktion für jedes Element in der Selection auf.
+     *
+     * */
+     fun each(fkt: (dynamic) -> dynamic): Selection
+
      fun toggleState(): Selection
      fun transition(): Selection
      fun duration(timeInMillis: Long): Selection
