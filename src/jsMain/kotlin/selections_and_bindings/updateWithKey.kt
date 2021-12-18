@@ -51,7 +51,7 @@ fun updateWithKey() {
             })
     }
     val updateOfData = { selection: Selection ->
-        selection.on("click") {
+        selection.on("click") {_, a: Selection ->
         val cs = selection.selectAll("circle")
             // hier erfolgt der Zugriff auf die Daten mit dem Schlüsselfeld, d. h. die Reihenfolge der Daten ist nicht
             // mehr entscheidend

@@ -1,5 +1,6 @@
 package selections_and_bindings
 
+import de.tiupe.Selection
 import de.tiupe.d3
 
 fun generalActualisationPattern() {
@@ -25,7 +26,7 @@ fun generalActualisationPattern() {
     val svg = d3.select("#generalActualisationPatternSvg")
 
     // Ereignisbehandler für das komplette SVG-Element wird registriert
-    svg.on("click") {
+    svg.on("click") { _ ,a: Selection ->
         // Tausch der Datenmengen beim Click auf das SVG-Element
         val intermediate = dataSet2
         dataSet2 = dataSet1

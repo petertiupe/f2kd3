@@ -4,6 +4,7 @@ import kotlinx.html.HTML
 import org.w3c.dom.Element
 import org.w3c.dom.Node
 import org.w3c.dom.SelectionMode
+import org.w3c.dom.events.Event
 import org.w3c.dom.pointerevents.PointerEvent
 import kotlin.js.Promise
 
@@ -31,6 +32,10 @@ external object d3 {
      * Erstellt ein Element mit dem übergebenen Namen im aktuellen Dokument
      * */
      fun create(name: String): Selection
+
+     /*
+     * Gibt einen Punkt mit einem zweiwertigen Array mit x und y-Koordinate zurück */
+     fun pointer(event: Event): Array<Int>
 
      fun scaleLinear(): dynamic
      fun axisBottom(fkt: dynamic) : dynamic
@@ -66,7 +71,9 @@ external class Selection() {
      fun filter(cssSelctor: String): Selection
      fun filter(fkt: (dynamic) -> Boolean): Selection
 
-
+     /*
+     * Gibt den aktuellen Node zur Selection zurück...*/
+     fun node(): Node
 
 
      fun append(name: String) : Selection
@@ -144,7 +151,39 @@ external class Selection() {
      fun toggleState(): Selection
      fun transition(): Selection
      fun duration(timeInMillis: Long): Selection
-     fun on(event: String, fkt: (Selection) -> Unit)
+
+     /*
+     * type ist der Typ des Events, z.B. click
+     * die Funktion wird aufgerufen, wenn für das DOM-Element das Event ausgelöst wird.
+     * Möchte man für ein Element das Event enfernen, übergibt man für die Funktion null als Argument.
+     *
+     * */
+     fun on(event: String, fkt: (Event, Selection) -> Unit)
+     fun on(event: String, fkt: (Event) -> Unit )
+
+     /*
+     * TODO: evtl die Typen der folgenden Funktion genauer spezifizieren
+     *
+     * d: der aktuelle Datenpunkt der Selektion
+     * i: der Index des aktuellen Datenpunkts
+     * data: die aktuelle Liste Selektionsknoten, nicht die Selektion
+     *
+     * Die selektion selbst steckt in dem this-Objekt des Aufrufkontextes.
+     *
+     * Das Event / die Ereignisintanz selbst wird nicht übergeben, kann jedoch mit der
+     * Instanzvariablen
+     *
+     *         d3.event
+     *
+     * genutzt werden.
+     *
+     * */
+     // fun on(event: String, fkt: (d: dynamic, i: dynamic, data: dynamic) -> Unit)
+
+
+     /*
+     * sendet ein benutzerdefiniertes Ereignis des angegebenen Typs an alle ELmente in der aktuellen Selektion
+     * */
      fun dispatch(event: String)
 
      /*
