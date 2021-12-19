@@ -16,8 +16,9 @@ external object d3 {
      * Durchsucht das gesamte Dokument und gibt eine Selection mit dem ersten Element zurück, das mit dem Selektor
      * übereinstimmt. Wird nichts gefunden, wird eine leere Liste zurückgegeben.
      * */
-     fun select(cssSelector: String): Selection
-     fun select(node: Node): Selection
+     //fun select(cssSelector: String): Selection
+     //fun select(node: Node): Selection
+     fun select(target: dynamic): Selection
 
      /*
      * Arbeitet wie [select], allerdings wird eine Liste mit allen Element zurückgegeben, die mit dem Selektor
@@ -49,8 +50,11 @@ external object d3 {
      val curveStep: dynamic
      val curveNatural: dynamic
 
+     // Beispiel für die Verhaltenskomponente drag
+     val drag: dynamic
 }
 
+external class DragFktObject()
 
 /*
      * Functions haben in der Regel innerhalb der Selection-API die folgende Signatur:
