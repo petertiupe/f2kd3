@@ -1,4 +1,5 @@
 import events_interactions_animations.detectCoordinates
+import events_interactions_animations.dragAndDrop
 import kotlinx.browser.window
 import selections_and_bindings.generalActualisationPattern
 import selections_and_bindings.insertAndSort
@@ -17,6 +18,7 @@ fun main() {
    if(window.location.href=="http://localhost:8080/selections_and_bindings/insertAndSort.html") insertAndSort()
 
    if(window.location.href=="http://localhost:8080/events_interactions_animations/detectCoordinates.html") detectCoordinates()
+   if(window.location.href=="http://localhost:8080/events_interactions_animations/dragAndDrop.html") dragAndDrop()
 
 
    if(window.location.href=="http://localhost:8080/template.html") template()
