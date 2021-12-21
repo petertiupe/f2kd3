@@ -26,7 +26,7 @@ fun generalActualisationPattern() {
     val svg = d3.select("#generalActualisationPatternSvg")
 
     // Ereignisbehandler für das komplette SVG-Element wird registriert
-    svg.on("click") { _ ,a: Selection ->
+    svg.on("click") { _: dynamic ,a: Selection ->
         // Tausch der Datenmengen beim Click auf das SVG-Element
         val intermediate = dataSet2
         dataSet2 = dataSet1

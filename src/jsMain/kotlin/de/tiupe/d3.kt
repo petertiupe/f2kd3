@@ -51,7 +51,9 @@ external object d3 {
      val curveNatural: dynamic
 
      // Beispiel für die Verhaltenskomponente drag
-     val drag: dynamic
+     fun drag(): dynamic
+
+     fun merge(): dynamic
 }
 
 external class DragFktObject()
@@ -155,15 +157,16 @@ external class Selection() {
      fun toggleState(): Selection
      fun transition(): Selection
      fun duration(timeInMillis: Long): Selection
-
+     fun delay(fkt: dynamic): Selection
      /*
      * type ist der Typ des Events, z.B. click
      * die Funktion wird aufgerufen, wenn für das DOM-Element das Event ausgelöst wird.
      * Möchte man für ein Element das Event enfernen, übergibt man für die Funktion null als Argument.
      *
      * */
-     fun on(event: String, fkt: (Event, Selection) -> Unit)
-     fun on(event: String, fkt: (Event) -> Unit )
+     //fun on(event: String, fkt: (Event, Selection) -> Unit)
+     //fun on(event: String, fkt: (Event) -> Unit )
+     fun on(event: String, fkt: dynamic )
 
      /*
      * TODO: evtl die Typen der folgenden Funktion genauer spezifizieren

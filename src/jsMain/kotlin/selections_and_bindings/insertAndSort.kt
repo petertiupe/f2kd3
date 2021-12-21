@@ -29,7 +29,7 @@ fun insertAndSort() {
     
     // Beim Überfahren mit der Maus, soll ein Element eingefügt werden
     var once = false
-    ul.on("mouseenter") { a, d: dynamic ->
+    ul.on("mouseenter") { a: dynamic, d: dynamic ->
         if (once) {
             console.log("once war true, nichts passiert")
         } else {
@@ -43,7 +43,7 @@ fun insertAndSort() {
         }
     }
     // Sortieren bei Klick
-    ul.on("click"){_, a: Selection ->
+    ul.on("click"){_: dynamic, a: Selection ->
         ul.selectAll("li").sort<String>{ a, b ->
             // Sortierung ist aufsteigend
             if(a < b) {
