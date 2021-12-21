@@ -51,7 +51,7 @@ external object d3 {
      val curveNatural: dynamic
 
      // Beispiel für die Verhaltenskomponente drag
-     val drag: dynamic
+     fun drag(): dynamic
 }
 
 external class DragFktObject()
@@ -199,3 +199,6 @@ external class Selection() {
 
 
 }
+
+
+

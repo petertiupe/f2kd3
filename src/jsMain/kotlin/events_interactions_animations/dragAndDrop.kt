@@ -23,7 +23,7 @@ import org.w3c.dom.events.Event
 fun dragAndDrop() {
     console.log("dragAndDrop läuft")
     var color: dynamic = null
-    // var widget: dynamic = null
+    var widget: dynamic = null
     // drag ist ein Funktionsobjekt, daher hier nicht als Funktion definiert,
     // sondern als var, damit man auf die Eigenschaften zugreifen kann.
     val dragFktObj = d3.drag()
@@ -36,15 +36,10 @@ fun dragAndDrop() {
         // die hier gerufenen Fkt sind daher nicht aus der d3js-api sondern aus der
         // HTML-API
         console.log("start gerufen")
-        val tg = ev.sourceEvent.target
-        //val evtg = d3.select(ev.target)
-        //val crtg = ev.currentTarget
-        //color = d3.select(ev.target).attr("fill")
-        //widget = d3.select(ev.target).attr("fill", "lime")
-
-
-        color = tg.attributes.fill.nodeValue  // liest Farbe, um sie zwischenzuspeichern
-        tg.attributes.fill.nodeValue="lime"
+        color = d3.select(ev.sourceEvent.currentTarget).attr("fill")
+        console.log("$color")
+        widget = d3.select(ev.sourceEvent.currentTarget).attr("fill", "lime")
+        console.log("$widget")
         ""
     }
 
@@ -64,10 +59,9 @@ fun dragAndDrop() {
 
     dragFktObj.on("end") { ev: dynamic ->
         console.log("end gerufen")
-        val tg = ev.sourceEvent.target
-        tg.attributes.fill.nodeValue=color
-        //d3.select(".target")?.attr("fill", color)
-        //color = null
+
+        d3.select(ev.sourceEvent.currentTarget).attr("fill", color)
+        color = null
         ""
     }
     dragFktObj(d3.select("#dragAndDropSvg").selectAll("circle"))

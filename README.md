@@ -45,3 +45,12 @@ und auch ein Element.
 # Das Shadow-DOM
 Für das Shadow-DOM gibt es die folgende [Seite](./shadowdom.md)
 
+# JavaScript Function-Objects in Kotlin
+Im Zusammenhang mit den Verhaltenskomponenten in dem Drag- und Drop-Beispiel gab es das Problem, dass in JavaScript
+Objekte mit eigenen Memberfunktionen durch eine Funktion abgebildet werden können. Um den entsprechenden Code in Kotlin
+abzubilden habe ich mich schwer getan. Das Thema wird auf der 
+[Kotlin-Seite](https://kotlinlang.org/docs/js-interop.html#declare-static-members-of-a-class) behandelt und wird 
+in einer eigenen [Datei](./functionObjectsToKotlin.md) beschrieben.
+
+
+
